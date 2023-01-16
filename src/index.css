@@ -56,7 +56,31 @@ body {
   width: 100px;
   /*  */
 
-  @media screen and (min-width: 576px) {
-    padding: 48px 28px;
+  @media (min-width: 767px) {
+  }
+
+  @media (min-width: 1024px) {
   }
 }
+/* 
+Для всех дочерних элементов
+ & > * {
+    box-shadow: none;
+  }
+
+Вложенный инпут будет иметь паддинг слева
+ & input {
+    padding-left: 0.25rem;
+  }
+
+
+Для всех вложенных элементов
+  & * {
+    color: var(--colors-text)
+  }
+
+Вложенный див с id (всего один див с id) красим соответственно цветовой теме. 
+ & > div[id] {
+    background-color: var(--colors-ui-base);
+  }
+*/
