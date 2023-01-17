@@ -60,6 +60,7 @@ body {
   }
 
   @media (min-width: 1024px) {
+    flex-direction: row;
   }
 }
 /* 
@@ -77,6 +78,11 @@ body {
 Для всех вложенных элементов
   & * {
     color: var(--colors-text)
+  }
+
+Для всех вложенных тегов b
+  & > b {
+    font-weight: var(--fw-bold);
   }
 
 Вложенный див с id (всего один див с id) красим соответственно цветовой теме. 

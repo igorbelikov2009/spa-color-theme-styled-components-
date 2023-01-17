@@ -78,8 +78,6 @@ const HomePage = ({ countries, setCountries }) => {
               key={country.name}
               onClick={() => {
                 push(`/country/${country.name}`);
-                console.log(country.name);
-                console.log(`/country/${country.name}`);
               }}
               {...countryInfo}
             />
