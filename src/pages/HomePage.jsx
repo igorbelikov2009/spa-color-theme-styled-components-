@@ -1,4 +1,5 @@
 import axios from "axios";
+// eslint-disable-next-line no-unused-vars
 import { useState, useEffect } from "react";
 
 import Card from "../components/Card";
@@ -7,14 +8,17 @@ import { Controls } from "../components/Controls";
 import { ALL_COUNTRIES } from "../config";
 import { useHistory } from "react-router-dom";
 
-const HomePage = () => {
-  const [countries, setCountries] = useState([]);
-  //   console.log(countries);
-  const history = useHistory();
+const HomePage = ({ countries, setCountries }) => {
+  // const [countries, setCountries] = useState([]);
+  // console.log(countries);
+  const { push } = useHistory();
 
   useEffect(() => {
-    axios.get(ALL_COUNTRIES).then(({ data }) => setCountries(data));
-  }, []);
+    if (!countries.length) {
+      axios.get(ALL_COUNTRIES).then(({ data }) => setCountries(data));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [countries]);
 
   return (
     <>
@@ -40,7 +44,17 @@ const HomePage = () => {
             ],
           };
 
-          return <Card key={country.name} onClick={() => history.push(`/country/${country.name}`)} {...countryInfo} />;
+          return (
+            <Card
+              key={country.name}
+              onClick={() => {
+                push(`/country/${country.name}`);
+                console.log(country.name);
+                console.log(`/country/${country.name}`);
+              }}
+              {...countryInfo}
+            />
+          );
         })}
       </List>
     </>
