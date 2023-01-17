@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CustomSelect } from "./CustomSelect";
 import { Search } from "./Search";
 import styled from "styled-components";
@@ -23,9 +23,17 @@ const Wrapper = styled.div`
   }
 `;
 
-export const Controls = () => {
+export const Controls = ({ onSearch }) => {
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState("");
+
+  useEffect(() => {
+    // console.log(region);
+    // Подготовим даные: получаем либо значение селектора, либо пустую строку
+    const regionValue = region?.value || "";
+    onSearch(search, regionValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search, region]);
 
   return (
     <Wrapper>
